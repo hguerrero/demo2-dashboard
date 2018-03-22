@@ -1,0 +1,22 @@
+{
+  "name": "example-ws",
+  "version": "1.0.0",
+  "description": "Example showing and HTML page being updated via an AMQP subscription over WebSockets",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ted-ross/example-ws.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ted-ross/example-ws/issues"
+  },
+  "homepage": "https://github.com/ted-ross/example-ws#readme",
+  "dependencies": {
+    "rhea": "^0.2.10"
+  }
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AMQP websockets subscription example</title>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<script src="node_modules/rhea/dist/rhea.min.js"></script>
+</head>
+ 
+<body>
+  <h2>Current values from subscription</h2>
+  <table border="0">
+    <tr><th>Value 1:</th><td id="value1">unknown</td></tr>
+    <tr><th>Value 2:</th><td id="value2">unknown</td></tr>
+  </table>
+<script>
+ 
+function update(data) {
+    var val1 = document.getElementById("value1");
+    var val2 = document.getElementById("value2");
+
+    val1.innerHTML = data.value1;
+    val2.innerHTML = data.value2;
+}
+ 
+var client = require("rhea");
+client.on("message", function (context) {
+    update(context.message.body);
+});
+
+var server = "ws://127.0.0.1:8080";
+var ws = client.websocket_connect(WebSocket);
+var connection = client.connect({connection_details:ws(server, ["binary"]), reconnect:true});
+connection.open_receiver("value_updates");
+ 
+</script>
+</body>
+</html>
