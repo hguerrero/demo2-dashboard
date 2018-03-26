@@ -3,7 +3,7 @@ Example showing and HTML page being updated via an AMQP subscription over WebSoc
 
 ## Contents of the project
 
-  * `index.html` - This is ths actual example web page with a script to receive updates via an AMQP subscription.
+  * `index.html` - This is the actual example web page with a script to receive updates via an AMQP subscription.
   * `config/qdrouterd.conf` - A basic configuration for Qpid Dispatch Router to provide WebSocket access for the example.  An installed router can be run with the command `/usr/sbin/qdrouterd -c config/qdrouterd.conf`
   * `datasource/source.py` - An example data source that feeds the subscription with rapidly updating data.
 
