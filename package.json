@@ -1,9 +1,17 @@
 {
   "name": "example-ws",
   "version": "1.0.0",
-  "description": "Example showing and HTML page being updated via an AMQP subscription over WebSockets",
+  "description":
+    "Example showing and HTML page being updated via an AMQP subscription over WebSockets",
   "main": "index.html",
   "scripts": {
+    "start":
+      "npm run parcel & npm run qdrouterd & npm run datasource & npm run http",
+    "http":
+      "browser-sync start --server --serveStatic dist/ --files 'dist/**/*' --directory",
+    "qdrouterd": "/usr/sbin/qdrouterd -c config/qdrouterd.conf",
+    "datasource": "python datasource/source.py",
+    "parcel": "parcel watch --no-hmr src/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,6 +25,16 @@
   },
   "homepage": "https://github.com/ted-ross/example-ws#readme",
   "dependencies": {
+    "lodash": "^4.17.5",
+    "three": "^0.91.0",
+    "vue": "^2.5.16",
     "rhea": "^0.2.10"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.6.1",
+    "browser-sync": "^2.10.1",
+    "node-sass": "^4.7.2",
+    "parcel-bundler": "^1.6.2",
+    "prettier": "^1.11.1"
   }
 }

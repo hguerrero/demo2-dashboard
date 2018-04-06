@@ -1,5 +1,12 @@
-# example-ws
-Example showing and HTML page being updated via an AMQP subscription over WebSockets
+# Demo 2 Dashboard
+
+This is the cloud traffic visualization for .  Example showing and HTML page being updated via an AMQP subscription over WebSockets
+
+## Quick-start
+
+    sudo dnf install qpid-dispatch-router python-qpid-proton
+    npm install
+    npm start
 
 ## Contents of the project
 
