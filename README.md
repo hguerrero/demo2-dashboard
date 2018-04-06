@@ -1,6 +1,6 @@
 # Demo 2 Dashboard
 
-This is the cloud traffic visualization for .  Example showing and HTML page being updated via an AMQP subscription over WebSockets
+This is the cloud traffic visualization for demo 2 of the Red Hat Summit keynote.
 
 ## Quick-start
 
