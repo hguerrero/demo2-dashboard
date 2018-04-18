@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { cloneDeep } from "lodash";
 import Actor from "./Actor.js";
 import { makeLogger } from "../logging/Logger.js";
 import ShaderLoader from "./ShaderLoader.js";
@@ -13,7 +14,7 @@ export default class MovingParticles extends Actor {
     super(stage);
 
     this.path = path;
-    this.paths = paths;
+    this.paths = cloneDeep(paths);
     this.color = color;
     this.image = image;
 
@@ -30,15 +31,31 @@ export default class MovingParticles extends Actor {
     this._initRaycasting();
     this._initParticles();
 
-    setTimeout(() => this._raycastPaths(), 500);
+    this._raycastPaths();
   }
+
+  static _initRaycastPlane(scene) {
+    if (!MovingParticles.raycastPlane) {
+      log("initializing shared raycast plane");
+      let geometry = new THREE.PlaneBufferGeometry(7500, 7500, 1, 1);
+      let material = new THREE.MeshBasicMaterial();
+      material.transparent = true;
+      material.opacity = 0;
+      let plane = new THREE.Mesh(geometry, material);
+      MovingParticles.raycastPlane = plane;
+      scene.add(plane);
+    } else {
+      log("raycast plane already initialized, skipping");
+    }
+  }
+
   update() {
     this._updateMove();
     this._updateProgress();
     // this._checkProgress();
   }
   destroy() {
-    free(this.stage.scene, this.raycastPlane);
+    free(this.stage.scene, MovingParticles.raycastPlane);
     free(this.stage.scene, this.points);
   }
 
@@ -69,28 +86,25 @@ export default class MovingParticles extends Actor {
   }
 
   _initRaycasting() {
-    this._initRaycastPlane();
+    MovingParticles._initRaycastPlane(this.stage.scene);
     this._initRaycaster();
   }
 
-  _initRaycastPlane() {
-    let geometry = new THREE.PlaneBufferGeometry(7500, 7500, 1, 1);
-    let material = new THREE.MeshBasicMaterial();
-    material.transparent = true;
-    material.opacity = 0;
-    let plane = new THREE.Mesh(geometry, material);
-    this.raycastPlane = plane;
-    this.stage.scene.add(plane);
-  }
-
   _initRaycaster() {
-    this.raycaster = new THREE.Raycaster();
+    if (!MovingParticles.raycaster) {
+      MovingParticles.raycaster = new THREE.Raycaster();
+    }
   }
 
   _raycast(x, y) {
-    this.raycaster.setFromCamera(new THREE.Vector2(x, y), this.stage.camera);
+    MovingParticles.raycaster.setFromCamera(
+      new THREE.Vector2(x, y),
+      this.stage.camera
+    );
     const result = [];
-    const intersection = this.raycaster.intersectObject(this.raycastPlane)[0]; // intersecting a plane, so there can be only one result
+    const intersection = MovingParticles.raycaster.intersectObject(
+      MovingParticles.raycastPlane
+    )[0]; // intersecting a plane, so there can be only one result
 
     if (intersection) {
       result.push(intersection.point.x);
