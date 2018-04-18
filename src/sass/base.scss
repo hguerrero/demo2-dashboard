@@ -1,0 +1,71 @@
+/*! minireset.css v0.0.3 | MIT License | github.com/jgthms/minireset.css */html,body,p,ol,ul,li,dl,dt,dd,blockquote,figure,fieldset,legend,textarea,pre,iframe,hr,h1,h2,h3,h4,h5,h6{margin:0;padding:0}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}ul{list-style:none}button,input,select,textarea{margin:0}html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}img,embed,iframe,object,audio,video{height:auto;max-width:100%}iframe{border:0}table{border-collapse:collapse;border-spacing:0}td,th{padding:0;text-align:left}
+
+$WIDTH: 1920px;
+$HEIGHT: 1080px;
+
+html, body {
+  width: $WIDTH;
+  height: $HEIGHT;
+}
+
+body {
+  background-image: url("../images/map.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-size: cover;
+  color: #fff;
+  overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  position: relative;
+}
+
+.parcel-preload {
+    display: none;
+}
+
+.datacenters {
+    .datacenter {
+        width: 300px;
+        position: absolute;
+
+        .cls-4, .cls-5, .st3, .st4 {
+            animation: blink linear infinite;
+            animation-duration: 0.1s;
+        }
+    }
+
+    #dc1-volume,
+    #dc2-volume,
+    #dc3-volume {
+        width: 0px;
+        transition: 0.6s ease-in-out width;
+    }
+
+    .dc-1 {
+        top: 103px;
+        left: 60px;
+
+        .cls-4, .st3 { animation-duration: .21s; }
+        .cls-5, .st4 { animation-duration: .25s; }
+    }
+    .dc-2 {
+        top: 403px;
+        left: 769px;
+
+        .cls-4, .st3 { animation-duration: .22s; }
+        .cls-5, .st4 { animation-duration: .27s; }
+    }
+    .dc-3 {
+        top: 168px;
+        right: 300px;
+
+        .cls-4, .st3 { animation-duration: .23s; }
+        .cls-5, .st4 { animation-duration: .29s; }
+    }
+}
+
+@keyframes blink {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

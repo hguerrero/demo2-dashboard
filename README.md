@@ -1,23 +1,18 @@
-# Demo 2 Dashboard
+# Demo 4 Dashboard
 
-This is the cloud traffic visualization for demo 2 of the Red Hat Summit keynote.
+Pipes and caves and particles!
 
-## Quick-start
+## Hacking
 
-    sudo dnf install qpid-dispatch-router python-qpid-proton
     npm install
     npm start
 
-## Contents of the project
+## Development notes
 
-  * `index.html` - This is the actual example web page with a script to receive updates via an AMQP subscription.
-  * `config/qdrouterd.conf` - A basic configuration for Qpid Dispatch Router to provide WebSocket access for the example.  An installed router can be run with the command `/usr/sbin/qdrouterd -c config/qdrouterd.conf`
-  * `datasource/source.py` - An example data source that feeds the subscription with rapidly updating data.
+ 1. the particles will only line up with the graph SVG when the browser is at 1080p (fullscreen)
+ 2. we can hide the path tool (lower left) when ready
+ 3. graph svg can be replaced with the pipes when ready!  woot!
+ 4. the build uses Parcel, which imports SCSS files from a javascript entry point.  I know, it's weird, but it works well enough for a small project like this.  let mclayton know if any problems arise
 
-## Dependencies
 
-To run this example, the following packages are required:
 
-  * rhea (AMQP client for JavaScript) - `npm install` from the project directory.
-  * qpid-dispatch-router (available in Fedora, EPEL, RHEL)
-  * python-qpid-proton

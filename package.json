@@ -1,40 +1,36 @@
 {
-  "name": "example-ws",
+  "name": "Dashboard",
   "version": "1.0.0",
-  "description":
-    "Example showing and HTML page being updated via an AMQP subscription over WebSockets",
-  "main": "index.html",
+  "description": "dashboard for demo",
+  "main": "Gulpfile.js",
   "scripts": {
-    "start":
-      "npm run parcel & npm run qdrouterd & npm run datasource & npm run http",
-    "http":
+    "serve":
       "browser-sync start --server --serveStatic dist/ --files 'dist/**/*' --directory",
-    "qdrouterd": "/usr/sbin/qdrouterd -c config/qdrouterd.conf",
-    "datasource": "python datasource/source.py",
     "parcel": "parcel watch --no-hmr src/index.html",
+    "start": "npm run parcel & npm run serve",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ted-ross/example-ws.git"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ted-ross/example-ws/issues"
-  },
-  "homepage": "https://github.com/ted-ross/example-ws#readme",
-  "dependencies": {
-    "lodash": "^4.17.5",
-    "three": "^0.91.0",
-    "vue": "^2.5.16",
-    "rhea": "^0.2.10"
-  },
   "devDependencies": {
     "babel-preset-env": "^1.6.1",
     "browser-sync": "^2.10.1",
     "node-sass": "^4.7.2",
     "parcel-bundler": "^1.6.2",
     "prettier": "^1.11.1"
+  },
+  "dependencies": {
+    "dropzone": "^5.4.0",
+    "fetch-base64": "^2.0.0",
+    "hapi": "^17.2.3",
+    "hapi-plugin-websocket": "^2.0.4",
+    "html5-websocket": "^2.0.2",
+    "http-proxy": "^1.16.2",
+    "lodash": "^4.17.5",
+    "node-fetch": "^2.1.1",
+    "reconnecting-websocket": "^3.2.2",
+    "three": "^0.91.0",
+    "update": "^0.7.4",
+    "vue": "^2.5.16"
   }
 }
