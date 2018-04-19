@@ -4,6 +4,10 @@ import { makeLogger } from "./lib/logging/Logger.js";
 
 const log = makeLogger("index");
 
+if (location.search === "?erin") {
+  document.body.classList.add("erin");
+}
+
 log("launching app");
 window.stage = new Stage();
 

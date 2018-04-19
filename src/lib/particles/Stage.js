@@ -7,6 +7,8 @@ import { makeLogger } from "../logging/Logger.js";
 
 const log = makeLogger("Stage");
 
+const erin = location.search === "?erin";
+
 export default class Stage {
   constructor({ container = document.body, data = {} } = {}) {
     log("created");
@@ -23,6 +25,15 @@ export default class Stage {
     this._initRenderer();
     this._initCamera();
     // this._initControls();
+
+    // wait a bit then add particles
+    setTimeout(() => {
+      if (erin) {
+        for (let i = 0; i < 6; ++i) {
+          this._initMovingParticles();
+        }
+      }
+    }, 1000);
   }
   _initControls() {
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);

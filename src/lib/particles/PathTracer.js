@@ -1,7 +1,7 @@
 import { max, chain, map, uniq, flatten, each } from "lodash";
 import * as lodash from "lodash";
 
-const GRID_SIZE = 30;
+const GRID_SIZE = 23;
 
 window._ = lodash;
 

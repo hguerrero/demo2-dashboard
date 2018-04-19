@@ -24,6 +24,11 @@ body {
     display: none;
 }
 
+.erin .bottombar {
+    display: none;
+}
+
+
 .datacenters {
     .datacenter {
         width: 300px;
@@ -43,21 +48,21 @@ body {
     }
 
     .dc-1 {
-        top: 103px;
+        top: 107px;
         left: 60px;
 
         .cls-4, .st3 { animation-duration: .21s; }
         .cls-5, .st4 { animation-duration: .25s; }
     }
     .dc-2 {
-        top: 403px;
+        top: 500px;
         left: 769px;
 
         .cls-4, .st3 { animation-duration: .22s; }
         .cls-5, .st4 { animation-duration: .27s; }
     }
     .dc-3 {
-        top: 168px;
+        top: 176px;
         right: 300px;
 
         .cls-4, .st3 { animation-duration: .23s; }
