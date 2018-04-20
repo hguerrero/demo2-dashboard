@@ -24,8 +24,13 @@ body {
     display: none;
 }
 
-.erin .bottombar {
-    display: none;
+.erin {
+    .bottombar {
+        display: none;
+    }
+    .bottombar-backdrop {
+        display: none;
+    }
 }
 
 
@@ -37,6 +42,10 @@ body {
         .cls-4, .cls-5, .st3, .st4 {
             animation: blink linear infinite;
             animation-duration: 0.1s;
+        }
+
+        .bottombar {
+            transition: clip-path 1.3s ease-in-out;
         }
     }
 

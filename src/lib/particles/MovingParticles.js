@@ -18,10 +18,10 @@ export default class MovingParticles extends Actor {
     this.color = color;
     this.image = image;
 
-    this.pointCount = erin ? 30 : 10;
-    this.speed = 0.002;
+    this.pointCount = erin ? 30 : 14;
+    this.speed = erin ? 0.002 : 0.005;
     this.delaySpread = 1.0;
-    this.size = erin ? 30 : 10;
+    this.size = erin ? 30 : 40;
     this.spread = 0;
     this.loopParticles = true;
     this.progress = 0;
@@ -209,6 +209,14 @@ export default class MovingParticles extends Actor {
     }
 
     return new THREE.Float32BufferAttribute(array, 3);
+  }
+
+  hide() {
+    this.points.visible = false;
+  }
+
+  show() {
+    this.points.visible = true;
   }
 
   _transformCoordinates(coordinates) {
