@@ -47,7 +47,7 @@ export default class Stage {
   }
   _initAMQ() {
     rhea.on("message", context => {
-      // this._handleAMQMessage(context.message.body);
+      this._handleAMQMessage(context.message.body);
     });
     // const server = "ws://127.0.0.1:8080";
     const server = "ws://10.18.97.56:8080";
