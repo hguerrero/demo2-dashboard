@@ -50,7 +50,7 @@ export default class Stage {
       this._handleAMQMessage(context.message.body);
     });
     // const server = "ws://127.0.0.1:8080";
-    const server = "ws://10.18.97.56:8080";
+    const server = "ws://console-demo2-amq.127.0.0.1.nip.io";
     const ws = rhea.websocket_connect(WebSocket);
     const connection = rhea.connect({
       connection_details: ws(server, ["binary"]),
@@ -65,8 +65,8 @@ export default class Stage {
     this.dc3bar = document.querySelector(".dc-3 .bottombar");
   }
   _handleAMQMessage(data) {
-    const PrivateCloud = data["On-Stage"];
-    const AzureCloud = data["Azure"];
+    const PrivateCloud = data["ONSTAGE"];
+    const AzureCloud = data["AZR"];
     const AmazonCloud = data["AWS"];
 
     const PrivateCloudOn = PrivateCloud > 0;
@@ -77,8 +77,8 @@ export default class Stage {
     );
 
     const prp = Math.min(1.0, PrivateCloud / 200);
-    const azp = Math.min(1.0, AzureCloud / 200);
-    const amp = Math.min(1.0, AmazonCloud / 200);
+    const azp = Math.min(1.0, AzureCloud / 280);
+    const amp = Math.min(1.0, AmazonCloud / 280);
 
     this.dc1bar.style.clipPath = `polygon(0px 0px, ${prp * 100}% 0px, ${prp *
       100}% 100%, 0px 100%)`;
@@ -88,15 +88,15 @@ export default class Stage {
       100}% 100%, 0px 100%)`;
 
     if (AzureCloudOn) {
-      this.actors[0].show();
-    } else {
-      this.actors[0].hide();
-    }
-
-    if (AmazonCloudOn) {
       this.actors[1].show();
     } else {
       this.actors[1].hide();
+    }
+
+    if (AmazonCloudOn) {
+      this.actors[0].show();
+    } else {
+      this.actors[0].hide();
     }
   }
   _initControls() {
