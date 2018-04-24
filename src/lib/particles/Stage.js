@@ -76,9 +76,9 @@ export default class Stage {
       `Private ${PrivateCloud} - Azure ${AzureCloud} - Amazon ${AmazonCloud}`
     );
 
-    const prp = Math.min(1.0, PrivateCloud / 200);
-    const azp = Math.min(1.0, AzureCloud / 280);
-    const amp = Math.min(1.0, AmazonCloud / 280);
+    const prp = PrivateCloudOn ? Math.min(1.0, PrivateCloud / 200) : 0.0;
+    const azp = AzureCloudOn   ? Math.min(1.0, AzureCloud / 280)   : 0.0;
+    const amp = AmazonCloudOn  ? Math.min(1.0, AmazonCloud / 280)  : 0.0;
 
     this.dc1bar.style.clipPath = `polygon(0px 0px, ${prp * 100}% 0px, ${prp *
       100}% 100%, 0px 100%)`;
