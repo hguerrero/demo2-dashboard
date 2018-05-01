@@ -50,7 +50,7 @@ export default class Stage {
       this._handleAMQMessage(context.message.body);
     });
     // const server = "ws://127.0.0.1:8080";
-    const server = "ws://console-demo2-amq.127.0.0.1.nip.io";
+    const server = "ws://console-demo2-amq.apps.summit-onstage.sysdeseng.com";
     const ws = rhea.websocket_connect(WebSocket);
     const connection = rhea.connect({
       connection_details: ws(server, ["binary"]),
