@@ -1,4 +1,4 @@
-# Demo 4 Dashboard
+# Demo 2 Dashboard
 
 Pipes and caves and particles!
 
@@ -15,4 +15,5 @@ Pipes and caves and particles!
  4. the build uses Parcel, which imports SCSS files from a javascript entry point.  I know, it's weird, but it works well enough for a small project like this.  let mclayton know if any problems arise
 
 
+For the demo2 dashboard (forked from this one), see [rhdemo/demo2-dashboard](https://github.com/rhdemo/demo2-dashboard).
 
