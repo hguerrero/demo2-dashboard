@@ -17,3 +17,10 @@ Pipes and caves and particles!
 
 For the demo2 dashboard (forked from this one), see [rhdemo/demo2-dashboard](https://github.com/rhdemo/demo2-dashboard).
 
+## Manual steps for demo pieces
+
+Here are some commands to run in the JS console to manually trigger actions needed by certain demo pieces.
+
+### Kill Amazon
+
+    stage.killAmazon();

@@ -29,6 +29,7 @@ varying vec3 vColor;
 varying float vDiscard;
 varying vec2 vPathPos;
 varying float vOpacity;
+varying vec4 vPosition;
 
 // p = progress [0..1)
 // pn = path number, indicating whether this particle should use path 0, path 1, etc
@@ -86,4 +87,6 @@ void main() {
     /* gl_PointSize = size * ( 100.0 / -mvPosition.z ); */
     gl_PointSize = size;
     gl_Position = projectionMatrix * mvPosition;
+
+    vPosition = gl_Position;
 }

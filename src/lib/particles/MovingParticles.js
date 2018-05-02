@@ -10,16 +10,22 @@ const log = makeLogger("MovingParticles");
 const erin = location.search === "?erin";
 
 export default class MovingParticles extends Actor {
-  constructor({ stage, paths = {}, path = 0, color, image } = {}) {
+  constructor({
+    stage,
+    paths = {},
+    path = 0,
+    color,
+    pointCount = 14,
+    speed = 0.005
+  } = {}) {
     super(stage);
 
     this.path = path;
     this.paths = cloneDeep(paths);
     this.color = color;
-    this.image = image;
 
-    this.pointCount = erin ? 30 : 14;
-    this.speed = erin ? 0.002 : 0.005;
+    this.pointCount = pointCount;
+    this.speed = speed;
     this.delaySpread = 1.0;
     this.size = erin ? 30 : 40;
     this.spread = 0;
@@ -184,7 +190,8 @@ export default class MovingParticles extends Actor {
         loopParticles: { type: "f", value: +this.loopParticles },
         texture: {
           value: new THREE.TextureLoader().load(
-            document.querySelector("#particle-sprite").src
+            document.querySelector(erin ? "#data-sprite" : "#particle-sprite")
+              .src
           )
         }
       },

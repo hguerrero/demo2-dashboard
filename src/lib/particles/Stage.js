@@ -34,9 +34,14 @@ export default class Stage {
     setTimeout(() => {
       if (erin) {
         // create erin's paths
-        for (let i = 0; i < 6; ++i) {
-          this._initMovingParticles();
-        }
+        this.erinPaths = [
+          this._initMovingParticles({ pointCount: 14, speed: 0.002 }),
+          this._initMovingParticles({ pointCount: 14, speed: 0.002 }),
+          this._initMovingParticles({ pointCount: 10, speed: 0.002 }),
+          this._initMovingParticles({ pointCount: 10, speed: 0.002 }),
+          this._initMovingParticles({ pointCount: 24, speed: 0.0013 }),
+          this._initMovingParticles({ pointCount: 24, speed: 0.0013 })
+        ];
       } else {
         // create ted's paths
         for (let i = 0; i < 2; ++i) {
@@ -44,6 +49,13 @@ export default class Stage {
         }
       }
     }, 1000);
+  }
+  killAmazon() {
+    document.querySelector("#amazon").classList.add("dead");
+    this.erinPaths.pop().destroy();
+    this.erinPaths.pop().destroy();
+    this.erinPaths.pop().destroy();
+    this.erinPaths.pop().destroy();
   }
   _initAMQ() {
     rhea.on("message", context => {
@@ -77,8 +89,8 @@ export default class Stage {
     );
 
     const prp = PrivateCloudOn ? Math.min(1.0, PrivateCloud / 200) : 0.0;
-    const azp = AzureCloudOn   ? Math.min(1.0, AzureCloud / 280)   : 0.0;
-    const amp = AmazonCloudOn  ? Math.min(1.0, AmazonCloud / 280)  : 0.0;
+    const azp = AzureCloudOn ? Math.min(1.0, AzureCloud / 280) : 0.0;
+    const amp = AmazonCloudOn ? Math.min(1.0, AmazonCloud / 280) : 0.0;
 
     this.dc1bar.style.clipPath = `polygon(0px 0px, ${prp * 100}% 0px, ${prp *
       100}% 100%, 0px 100%)`;
@@ -117,10 +129,11 @@ export default class Stage {
       this._initMovingParticles();
     });
   }
-  _initMovingParticles() {
-    const mp = MovingParticleFactory.create(this);
+  _initMovingParticles(...args) {
+    const mp = MovingParticleFactory.create(this, ...args);
     this._registerActor(mp);
     mp.onComplete(mp => this._unregisterActor(mp));
+    return mp;
   }
   _registerActor(actor) {
     log(`adding actor ${actor.name} to the stage`);
