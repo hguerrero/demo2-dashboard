@@ -42,7 +42,7 @@ body {
         transition: 1.618s ease-in-out transform;
 
         &.dead {
-            transform: scale(0.5);
+            transform: scale(0.0);
             .cls-4, .cls-5, .st3, .st4 {
                 opacity: 0;
                 animation: none;
