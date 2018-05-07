@@ -9,7 +9,7 @@ const log = makeLogger("MovingParticleFactory");
 const erin = location.search === "?erin";
 
 export default class MovingParticleFactory {
-  static create(stage, { pointCount, speed }) {
+  static create(stage, { pointCount, speed } = {}) {
     log("creating a moving particle object");
 
     // coordinates are: [ x1, y1, x2, y2, x3, y3, ..., xN, yN ]

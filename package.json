@@ -4,7 +4,7 @@
   "description": "dashboard for demo",
   "main": "Gulpfile.js",
   "scripts": {
-    "serve": "browser-sync start --server --serveStatic dist/ --files 'dist/**/*' --directory",
+    "serve": "browser-sync start --server --serveStatic dist/ --files 'dist/**/*' --directory --no-open",
     "parcel": "parcel watch --no-hmr src/index.html",
     "start": "npm run parcel & npm run serve",
     "test": "echo \"Error: no test specified\" && exit 1"
